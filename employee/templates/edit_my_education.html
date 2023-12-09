@@ -1,0 +1,102 @@
+{% extends 'emp_base.html' %}
+
+
+{% block main %}
+
+<div class="card shadow m-2" >
+    <div class="card-body">
+        <a href="{% url 'my_education' %}" class="float-end btn btn-primary btn-sm">View Education Detail</a>
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Edit Education Detail</h5>
+    </div>
+    <div  class="container-fluid">
+    <form action="" method="POST">
+            {% csrf_token %}
+        
+        <table class="table table-bordered">
+            <tr>
+                <th>Post Graduation Course Name</th>
+                <td><input type="text" name="coursepg" value="{{education.coursepg}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Post Graduate School/college Name</th>
+                <td><input type="text" name="schoolclgpg" value="{{education.schoolclgpg}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Year Of Passing in PG</th>
+                <td><input type="text" name="yearofpassingpg" value="{{education.yearofpassingpg}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Percentage in PG</th>
+                <td><input type="text" name="percentagepg" value="{{education.percentagepg}}" class="form-control"></td>
+            </tr>
+
+            
+            <tr>
+                <th>Graduation Course Name</th>
+                <td><input type="text" name="coursegra" value="{{education.coursegra}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Graduate School/college Name</th>
+                <td><input type="text" name="schoolclgra" value="{{education.schoolclgra}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Year Of Passing in Graducation</th>
+                <td><input type="text" name="yearofpassinggra" value="{{education.yearofpassinggra}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Percentage in Graducation</th>
+                <td><input type="text" name="percentagegra" value="{{education.percentagegra}}" class="form-control"></td>
+            </tr>
+
+            
+            <tr>
+                <th>HSC Course Name</th>
+                <td><input type="text" name="coursegrahsc" value="{{education.coursegrahsc}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>HSC College Name</th>
+                <td><input type="text" name="schoolclhsc" value="{{education.schoolclhsc}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Year Of Passing in HSC</th>
+                <td><input type="text" name="yearofpassinghsc" value="{{education.yearofpassinghsc}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Percentage in HSC</th>
+                <td><input type="text" name="percentagehsc" value="{{education.percentagehsc}}" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <th>SSC Course Name</th>
+                <td><input type="text" name="coursessc" value="{{education.coursessc}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>SSC College/School Name</th>
+                <td><input type="text" name="schoolclgssc" value="{{education.schoolclgssc}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Year of passing in SSC</th>
+                <td><input type="text" name="yearofpassingssc" value="{{education.yearofpassingssc}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Percentage in SSC</th>
+                <td><input type="text" name="percentagessc" value="{{education.percentagessc}}" class="form-control"></td>
+            </tr>
+        </table>
+        <center><input type="submit" value="submit" class="btn btn-primary mb-3 px-4"></center>
+    </form>
+    </div>
+</div>
+{% if error == "no" %}
+<script>
+    alert('Education detail has been updated Successfully!!');
+    window.location = ('{% url 'edit_my_education' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try again !!!');
+</script>
+{% endif %}
+
+{% endblock main %}

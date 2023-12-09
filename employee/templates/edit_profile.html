@@ -1,0 +1,92 @@
+{% extends 'admin_base.html' %}
+
+
+{% block main %}
+
+<div class="card shadow m-2" >
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Profile</h5>
+    </div>
+    <div  class="container-fluid">
+        <form action="" method="post" name="signup" onsubmit="return checkpassword()">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" name="fname" class="form-control" placeholder="Enter first name" pattern="[A-Za-z]+" value="{{employee.user.first_name}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" name="lname" class="form-control" placeholder="Enter last name" pattern="[A-Za-z]+" value="{{employee.user.last_name}}">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="empcode">Employee Code</label>
+                        <input type="text" name="empcode" class="form-control" placeholder="Enter Employee Code" pattern="[0-9]+" value="{{employee.empcode}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="designation">Employee Designation</label>
+                        <input type="text" name="designation" class="form-control" placeholder="Enter Designation" value="{{employee.designation}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="department">Employee Department</label>
+                        <input type="text" name="department" class="form-control" placeholder="Enter department" value="{{employee.empdept}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="email">Email ID</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter Email ID" value="{{employee.user.username}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" name="contact" class="form-control" placeholder="Contact Number" value="{{employee.contact}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="jdate">joining Date [{{employee.joining_date}}] </label>
+                        <input type="date" name="jdate" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="gender">Gender  [{{employee.gender}}]</label>
+                        <select name="gender" id="" class="form-control">
+                            <option value="None">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select> 
+                    </div>
+                </div>
+            </div>      
+         
+            <input type="submit" value="Submit" class="btn btn-primary m-3 p-2">
+            
+        </form>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('profile updated Successfully!!');
+    window.location = ('{% url 'allemp' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try again !!!');
+</script>
+{% endif %}
+
+{% endblock main %}

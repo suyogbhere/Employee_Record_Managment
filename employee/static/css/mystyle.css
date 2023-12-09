@@ -1,0 +1,48 @@
+/* ======  navbar link color =============*/
+.nav-link{
+    color: white !important ;
+}
+
+/* ======  Hover effect on navbar link =============*/
+.nav-link:hover{
+    color: yellow !important ;
+    background-color: red;
+    border-radius: 15px;
+}
+
+
+/* ======  navbar brand bold =============*/
+.navbar-brand{
+    font-weight: bold;
+}
+
+
+
+
+/* ====================
+#DATATABLE PAGINATION
+==================== */
+/* Pagination */
+#example_paginate{
+    margin-top: -30px !important;
+    margin-bottom: 30px !important;
+}
+
+#example_filter{
+    margin-top: -30px !important;
+}
+
+
+/* Show Entries */
+.dataTables_length{
+    float: right !important;
+    margin-top: 10px !important;
+}
+
+
+/* Navbar header */
+.active{
+    background-color: orangered;
+    border-radius: 5px;
+}
+

@@ -1,0 +1,73 @@
+{% load static %}
+
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <script src="{% static 'js/fontawsome.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+</head>
+
+<body style="background-image: url({% static 'images/emp8.jpg' %});">
+    <div class="row">
+      <div class="col-lg-5 m-auto">
+          <div class="card mt-5 bg-dark">
+              <div class="card-title text-center mt-3">
+                  <img src="{% static 'images/admin.jpg' %}" width="100" srcset="">
+              </div>
+              <div class="card-body">
+                  <form action="" method="post">
+                      {% csrf_token %}
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                  <i class="fa fa-user fa-2x"></i>
+                              </span>
+                          </div>
+                          <input type="text" name="username" class="form-control" placeholder="User Name">
+                      </div>
+
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                  <i class="fa fa-lock fa-2x"></i>
+                              </span>
+                          </div>
+                          <input type="password" name="pwd" class="form-control" placeholder="Password">
+                      </div>  
+                      <input type="submit" value="Submit" class="btn btn-success px-5">
+                      <a href="{% url 'index' %}" class="float-end text-white mt-2"> Go Back To home</a>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>  
+</body>  
+ 
+{% if error == "no" %}
+<script>
+    alert('Logged in Successfully!!')
+    window.location = ('{% url 'admin_home' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Invalid login credentials, Try again !!!')
+</script>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+

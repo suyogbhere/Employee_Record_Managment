@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+    <style>
+        .list-group-item{
+            padding:8px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 p-0">
+               <center> <img src="{% static 'images/emp_logo.jpg' %}" alt="wallpaper" width="120" class="img-thumbnail rounded-circle"></center>
+
+               <div class="list-group">
+                    <a href="{% url 'emp_home' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/emp_home/' %} active {% endif %} ">Dashboard</a>
+                    <a href="{% url 'profile' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/profile/' %} active {% endif %}  ">Profile</a>
+                    <a href="{% url 'my_experience' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/my_experience/' %} active {% endif %}">My Experience</a>
+                    <a href="{% url 'edit_experience' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/edit_experience/' %} active {% endif %}">Edit My Experience</a>
+                    <a href="{% url 'my_education' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/my_education/' %} active {% endif %}">Education</a>
+                    <a href="{% url 'edit_my_education' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/edit_my_education/' %} active {% endif %}">Edit My Education</a>
+                    <a href="{% url 'changepwd' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/changepwd/' %} active {% endif %}">Change Password</a>
+                    <a href="{% url 'logout' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/logout/' %} active {% endif %}">Logout</a>
+               </div>
+
+            </div>
+            <div class="col-sm-10 p-0">
+                <div class="container-fluid">
+                    <h5 class="text-center p-3 fw-bold" style="border-bottom: 2px solid green; border-top: 2px solid green;" >
+                        Employee Record Management System
+                    </h5>
+                    <div class="card shadow" style="min-height: 89vh;">
+                        <div class="card-body">
+                            {% block main %} {% endblock main %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+
+
+    <script src="{% static 'js/fontawsome.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+</body>
+</html>

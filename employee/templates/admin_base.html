@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/datatablebootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <style>
+        .list-group-item{
+            padding:8px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 p-0">
+               <center> <img src="{% static 'images/admin.jpg' %}" alt="wallpaper" width="120" class="img-thumbnail rounded-circle"></center>
+
+               <div class="list-group">
+                    <a href="{% url 'admin_home' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/admin_home/' %} active {% endif %} ">Dashboard</a>
+                    <a href="{% url 'allemp' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/allemp/' %} active {% endif %}  ">All Employees</a>
+                    <a href="{% url 'changepwdadm' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/changepwdadm/' %} active {% endif %}">Change Password</a>
+                    <a href="{% url 'logout' %}" class="list-group-item list-group-item-warning list-group-item-action {% if request.path == '/logout/' %} active {% endif %}">Logout</a>
+               </div>
+
+            </div>
+            <div class="col-sm-10 p-0">
+                <div class="container-fluid">
+                    <h5 class="text-center p-3 fw-bold" style="border-bottom: 2px solid green; border-top: 2px solid green;" >
+                        Employee Record Management System
+                    </h5>
+                    <div class="card shadow" style="min-height: 89vh;">
+                        <div class="card-body">
+                            {% block main %} {% endblock main %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+
+
+    <script src="{% static 'js/fontawsome.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/pdfmake.js' %}"></script>
+    <script src="{% static 'js/pdf_vfs.js' %}"></script>
+    <script src="{% static 'js/print.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <!-- <script src="{% static 'js/buttonprint.js' %}"></script> -->
+    <script>
+        // $(document).ready(function(){
+        //     $('#example').DataTable({
+        //         dom: 'Bfrtip',
+        //         buttons:[
+        //             'copyHtml5',
+        //             'excelHtml5',
+        //             'csvHtml5',
+        //             'pdfHtml5'
+        //         ]
+        //     });
+        // });
+
+    $("#example").DataTable({ 
+    //Datatables Configurations
+    paging: true,
+    pageLength: 10,
+    lengthChange:false,
+    autoWidth:true,
+    searching:true,
+    bInfo: true,
+    bSort:true,
+
+    // BUTTONS
+dom: 'lBfrtip',
+buttons:[
+    {   //COPY
+        extend: 'copy',
+        text: 'copy',
+        className: 'btn btn-secondary',
+        titleAttr: "Copy",
+
+        // Choose the column you with to copy
+        // exportOptions:{
+        //     columns:[0,1,2,3,4,5]
+        // }
+    },
+    {   //EXCEL
+        extend: 'excel',
+        text: 'excel',
+        className: 'btn btn-secondary',
+        titleAttr: "Excel",
+
+        // Choose the column you with to excel
+        // exportOptions:{
+        //     columns:[0,1,2,3,4,5]
+        // }
+    },
+    {   //PRINT
+        extend: 'print',
+        text: 'print',
+        className: 'btn btn-secondary',
+        titleAttr: "Print",
+
+        // Choose the column you with to print
+        // exportOptions:{
+        //     columns:[0,1,2,3,4,5]
+        // },
+        // Font Size (when export to print)
+        customize: function( win ) {
+            $(win.document.body).css('font-size', '10pt')
+            $(win.document.body).find('table')
+            .addClass('compact')
+            .css('font-size', 'inherit');
+        }
+    },
+]
+});
+
+// document.getElementById('downloadingexcelone').addEventListener('click', function(){
+//     var table2excel = new Table2Excel();
+//     table2excel.export(document.querySelectorAll("#example"));
+// });
+    </script>
+</body>
+</html>
